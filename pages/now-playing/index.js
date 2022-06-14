@@ -21,14 +21,17 @@ const NowPlaying = ({ movies }) => {
     <>
       <div className={classes.container}>
         <GridContainer>
-          <GridItem xs={12} sm={7} md={7}>
+          <GridItem xs={12} sm={12} md={12}>
             <div className={classes.title}>
               <h2>Now Playing</h2>
               <h4>
-                Material Kit PRO is coming with the famous colored shadows. That
-                means each image from the cards is getting an unique color
-                shadow. You don{"'"}t have to do anything to activate them, just
-                enjoy the new look of your website.
+                You can see the drama and TV programs that you can enjoy online
+                at a glance from the list of JustWatch works! You can search for
+                works being distributed on monthly flat-rate video distribution
+                services such as Netflix, Hulu, and Amazon Prime Video by
+                narrowing down the conditions. You can also search for services
+                that allow you to rent or purchase the video distribution
+                version on iTunes, Google Play, etc.
               </h4>
               <br />
             </div>

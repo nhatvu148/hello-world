@@ -1,101 +1,41 @@
-import { useRouter } from "next/router";
-
-// @material-ui/icons
-import Search from "@material-ui/icons/Search";
+// nodejs library that concatenates classes
+import classNames from "classnames";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+
+// sections for this page
+import SectionNavbars from "pages-sections/components/SectionNavbars.js";
+import SectionCarousel from "pages-sections/components/SectionCarousel.js";
 
 // core components
-import Header from "components/Header/Header.js";
-import Button from "components/CustomButtons/Button.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
+import Parallax from "components/Parallax/Parallax.js";
+import GridContainer from "components/Grid/GridContainer.js";
+import GridItem from "components/Grid/GridItem.js";
 
-import navbarsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/navbarsStyle.js";
+import componentsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsStyle.js";
 
-const useStyles = makeStyles(navbarsStyle);
+const useStyles = makeStyles(componentsStyle);
 
 const Home = () => {
-  const router = useRouter();
   const classes = useStyles();
-
   return (
     <div>
-      <Header
-        brand="NextJS Movies"
-        color="rose"
-        links={
-          <div className={classes.collapse}>
-            <List className={classes.list + " " + classes.mrAuto}>
-              <ListItem className={classes.listItem}>
-                <Button
-                  className={classes.navLink}
-                  onClick={(e) => {
-                    router.push("/now-playing");
-                  }}
-                  color="transparent"
-                >
-                  Now Playing
-                </Button>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Button
-                  className={classes.navLink}
-                  onClick={(e) => {
-                    router.push("/popular");
-                  }}
-                  color="transparent"
-                >
-                  Popular
-                </Button>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Button
-                  className={classes.navLink}
-                  onClick={(e) => {
-                    router.push("/top-rated");
-                  }}
-                  color="transparent"
-                >
-                  Top Rated
-                </Button>
-              </ListItem>
-              <ListItem className={classes.listItem}>
-                <Button
-                  className={classes.navLink}
-                  onClick={(e) => {
-                    router.push("/upcoming");
-                  }}
-                  color="transparent"
-                >
-                  Upcoming
-                </Button>
-              </ListItem>
-            </List>
-            <div className={classes.mlAuto}>
-              <CustomInput
-                white
-                inputRootCustomClasses={classes.inputRootCustomClasses}
-                formControlProps={{
-                  className: classes.formControl,
-                }}
-                inputProps={{
-                  placeholder: "Search",
-                  inputProps: {
-                    "aria-label": "Search",
-                    className: classes.searchInput,
-                  },
-                }}
-              />
-              <Button color="white" justIcon round>
-                <Search className={classes.searchIcon} />
-              </Button>
-            </div>
-          </div>
-        }
-      />
+      <SectionNavbars />
+      <Parallax image="/img/nextjs_header.jpeg" className={classes.parallax}>
+        <div className={classes.container}>
+          <GridContainer>
+            <GridItem>
+              <div className={classes.brand}>
+                <h1>
+                  NextJS Movies <span className={classes.proBadge}>PRO</span>
+                </h1>
+              </div>
+            </GridItem>
+          </GridContainer>
+        </div>
+      </Parallax>
+      {/* <SectionCarousel /> */}
     </div>
   );
 };

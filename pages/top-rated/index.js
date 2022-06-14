@@ -1,5 +1,5 @@
-import axios from "axios";
 import Movie from "components/movie";
+import { getTopRated } from "api/themoviedb";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -45,13 +45,10 @@ const TopRated = ({ movies }) => {
 export default TopRated;
 
 export const getStaticProps = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
-  );
-
+  const movies = await getTopRated();
   return {
     props: {
-      movies: response.data.results,
+      movies,
     },
   };
 };

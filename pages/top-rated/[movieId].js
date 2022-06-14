@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getTopRated, getMovie } from "api/themoviedb";
 
 const Movie = ({ movie }) => {
   return (
@@ -11,13 +12,9 @@ const Movie = ({ movie }) => {
 export default Movie;
 
 export const getStaticPaths = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
-  );
-
+  const data = await getTopRated();
   return {
-    paths: response.data.results.map((result) => {
-      console.log(result);
+    paths: data.map((result) => {
       return {
         params: { movieId: result.id.toString() },
       };
@@ -27,15 +24,10 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  console.log("movieId ", params.movieId);
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/${params.movieId}?api_key=${process.env.TMDB_API_KEY}`
-  );
-  console.log(response.data);
-
+  const movie = await getMovie(params.movieId);
   return {
     props: {
-      movie: response.data,
+      movie,
     },
   };
 };

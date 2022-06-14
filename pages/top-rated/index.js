@@ -1,5 +1,5 @@
 import axios from "axios";
-import Movie from "../components/movie";
+import Movie from "components/movie";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,7 +12,7 @@ import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/
 
 const useStyles = makeStyles(styles);
 
-const Movies = ({ movies }) => {
+const TopRated = ({ movies }) => {
   const classes = useStyles();
 
   return (
@@ -34,7 +34,7 @@ const Movies = ({ movies }) => {
         </GridContainer>
         <GridContainer>
           {movies.map((movie) => {
-            return <Movie movie={movie} key={movie.id} />;
+            return <Movie movie={movie} key={movie.id} classes={classes} />;
           })}
         </GridContainer>
       </div>
@@ -42,19 +42,16 @@ const Movies = ({ movies }) => {
   );
 };
 
-export default Movies;
+export default TopRated;
 
 export const getStaticProps = async () => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
   );
-  const response2 = await axios.get(
-    `https://api.themoviedb.org/3/movie/429?api_key=${process.env.TMDB_API_KEY}`
-  );
-  console.log(response2.data);
+
   return {
     props: {
-      movies: response.data.results,
+      movies: response.data.results.slice(0, 3),
     },
   };
 };

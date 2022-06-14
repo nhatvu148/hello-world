@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 // core components
 import GridItem from "components/Grid/GridItem.js";
@@ -7,28 +8,21 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Warning from "components/Typography/Warning.js";
 
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-
-import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js";
-
-const useStyles = makeStyles(styles);
-
-const Movie = ({ movie }) => {
-  const classes = useStyles();
-
+const Movie = ({ movie, classes }) => {
   return (
     <GridItem xs={12} sm={4} md={4}>
       <Card blog>
         <CardHeader image>
-          <a href="#pablo" onClick={(e) => e.preventDefault()}>
-            <Image
-              src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              alt="..."
-              width={500}
-              height={500}
-            />
-          </a>
+          <Link href={`/top-rated/${movie.id}`}>
+            <a>
+              <Image
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                alt="..."
+                width={500}
+                height={500}
+              />
+            </a>
+          </Link>
           <div
             className={classes.coloredShadow}
             style={{
@@ -41,11 +35,7 @@ const Movie = ({ movie }) => {
           <Warning>
             <h6 className={classes.cardCategory}>{movie.title}</h6>
           </Warning>
-          <h4 className={classes.cardTitle}>
-            <a href="#pablo" onClick={(e) => e.preventDefault()}>
-              {movie.overview}
-            </a>
-          </h4>
+          <h4 className={classes.cardTitle}>{movie.overview}</h4>
         </CardBody>
       </Card>
     </GridItem>

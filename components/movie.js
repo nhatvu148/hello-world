@@ -8,12 +8,12 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Warning from "components/Typography/Warning.js";
 
-const Movie = ({ movie, classes }) => {
+const Movie = ({ movie, classes, category }) => {
   return (
     <GridItem xs={12} sm={4} md={4}>
       <Card blog>
         <CardHeader image>
-          <Link href={`/top-rated/${movie.id}`}>
+          <Link href={`${category}/${movie.id}`}>
             <a>
               <Image
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}

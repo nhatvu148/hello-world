@@ -1,4 +1,5 @@
 import Movie from "components/movie";
+import { useRouter } from "next/router";
 import { getNowPlaying } from "api/themoviedb";
 
 // core components
@@ -13,6 +14,7 @@ import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/
 const useStyles = makeStyles(styles);
 
 const NowPlaying = ({ movies }) => {
+  const router = useRouter();
   const classes = useStyles();
 
   return (
@@ -34,7 +36,14 @@ const NowPlaying = ({ movies }) => {
         </GridContainer>
         <GridContainer>
           {movies.map((movie) => {
-            return <Movie movie={movie} key={movie.id} classes={classes} />;
+            return (
+              <Movie
+                movie={movie}
+                key={movie.id}
+                classes={classes}
+                category={router.pathname}
+              />
+            );
           })}
         </GridContainer>
       </div>

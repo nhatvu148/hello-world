@@ -11,4 +11,7 @@ module.exports = withPlugins([[withImages]], {
   images: {
     domains: ["image.tmdb.org"],
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 });

@@ -51,7 +51,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      movies: response.data.results.slice(0, 3),
+      movies: response.data.results,
     },
   };
 };

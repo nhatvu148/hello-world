@@ -10,19 +10,18 @@ const Movie = ({ movie }) => {
 
 export default Movie;
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
+  const response = await axios.get(
+    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
+  );
+
   return {
-    paths: [
-      {
-        params: { movieId: "429" },
-      },
-      {
-        params: { movieId: "238" },
-      },
-      {
-        params: { movieId: "19404" },
-      },
-    ],
+    paths: response.data.results.map((result) => {
+      console.log(result);
+      return {
+        params: { movieId: result.id.toString() },
+      };
+    }),
     fallback: false,
   };
 };

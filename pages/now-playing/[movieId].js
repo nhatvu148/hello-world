@@ -1,4 +1,4 @@
-import { getTopRated, getMovie } from "api/themoviedb";
+import { getNowPlaying, getMovie } from "api/themoviedb";
 
 const Movie = ({ movie }) => {
   return (
@@ -11,7 +11,7 @@ const Movie = ({ movie }) => {
 export default Movie;
 
 export const getStaticPaths = async () => {
-  const data = await getTopRated();
+  const data = await getNowPlaying();
   return {
     paths: data.map((result) => {
       return {

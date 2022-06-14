@@ -1,5 +1,5 @@
 import Movie from "components/movie";
-import { getTopRated } from "api/themoviedb";
+import { getNowPlaying } from "api/themoviedb";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -12,7 +12,7 @@ import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/
 
 const useStyles = makeStyles(styles);
 
-const TopRated = ({ movies }) => {
+const NowPlaying = ({ movies }) => {
   const classes = useStyles();
 
   return (
@@ -21,7 +21,7 @@ const TopRated = ({ movies }) => {
         <GridContainer>
           <GridItem xs={12} sm={7} md={7}>
             <div className={classes.title}>
-              <h2>Top Rated</h2>
+              <h2>Now Playing</h2>
               <h4>
                 Material Kit PRO is coming with the famous colored shadows. That
                 means each image from the cards is getting an unique color
@@ -42,10 +42,10 @@ const TopRated = ({ movies }) => {
   );
 };
 
-export default TopRated;
+export default NowPlaying;
 
 export const getStaticProps = async () => {
-  const movies = await getTopRated();
+  const movies = await getNowPlaying();
   return {
     props: {
       movies,

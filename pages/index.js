@@ -1,30 +1,101 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
+
+// @material-ui/icons
+import Search from "@material-ui/icons/Search";
+
+// @material-ui/core components
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+
+// core components
+import Header from "components/Header/Header.js";
+import Button from "components/CustomButtons/Button.js";
+import CustomInput from "components/CustomInput/CustomInput.js";
+
+import navbarsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/navbarsStyle.js";
+
+const useStyles = makeStyles(navbarsStyle);
 
 const Home = () => {
   const router = useRouter();
+  const classes = useStyles();
 
-  const handleClick = () => {
-    console.log("Placing your order");
-    // router.push("/product");
-    router.replace("/product");
-  };
   return (
     <div>
-      <h1>Home Page</h1>
-      <Link href="/blog">
-        <a>Blog</a>
-      </Link>
-      <Link href="/product">
-        <a>Products</a>
-      </Link>
-      <button onClick={handleClick}>Place Order</button>
-      <Link href="/users">
-        <a>Users</a>
-      </Link>
-      <Link href="/posts">
-        <a>Posts</a>
-      </Link>
+      <Header
+        brand="NextJS Movies"
+        color="rose"
+        links={
+          <div className={classes.collapse}>
+            <List className={classes.list + " " + classes.mrAuto}>
+              <ListItem className={classes.listItem}>
+                <Button
+                  className={classes.navLink}
+                  onClick={(e) => {
+                    router.push("/now-playing");
+                  }}
+                  color="transparent"
+                >
+                  Now Playing
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  className={classes.navLink}
+                  onClick={(e) => {
+                    router.push("/popular");
+                  }}
+                  color="transparent"
+                >
+                  Popular
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  className={classes.navLink}
+                  onClick={(e) => {
+                    router.push("/top-rated");
+                  }}
+                  color="transparent"
+                >
+                  Top Rated
+                </Button>
+              </ListItem>
+              <ListItem className={classes.listItem}>
+                <Button
+                  className={classes.navLink}
+                  onClick={(e) => {
+                    router.push("/upcoming");
+                  }}
+                  color="transparent"
+                >
+                  Upcoming
+                </Button>
+              </ListItem>
+            </List>
+            <div className={classes.mlAuto}>
+              <CustomInput
+                white
+                inputRootCustomClasses={classes.inputRootCustomClasses}
+                formControlProps={{
+                  className: classes.formControl,
+                }}
+                inputProps={{
+                  placeholder: "Search",
+                  inputProps: {
+                    "aria-label": "Search",
+                    className: classes.searchInput,
+                  },
+                }}
+              />
+              <Button color="white" justIcon round>
+                <Search className={classes.searchIcon} />
+              </Button>
+            </div>
+          </div>
+        }
+      />
     </div>
   );
 };

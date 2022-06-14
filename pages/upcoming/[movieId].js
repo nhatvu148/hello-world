@@ -1,4 +1,4 @@
-import { getUpcoming, getMovie } from "api/themoviedb";
+import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
 const Movie = ({ movie }) => {
   return (
@@ -11,7 +11,7 @@ const Movie = ({ movie }) => {
 export default Movie;
 
 export const getStaticPaths = async () => {
-  const data = await getUpcoming();
+  const data = await getMoviesByCategory("upcoming");
   return {
     paths: data.map((result) => {
       return {

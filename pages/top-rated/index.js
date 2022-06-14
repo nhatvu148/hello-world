@@ -1,6 +1,6 @@
 import Movie from "components/movie";
 import { useRouter } from "next/router";
-import { getTopRated } from "api/themoviedb";
+import { getMoviesByCategory } from "api/themoviedb";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -54,7 +54,7 @@ const TopRated = ({ movies }) => {
 export default TopRated;
 
 export const getStaticProps = async () => {
-  const movies = await getTopRated();
+  const movies = await getMoviesByCategory("top_rated");
   return {
     props: {
       movies,

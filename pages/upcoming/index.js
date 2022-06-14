@@ -1,6 +1,6 @@
 import Movie from "components/movie";
 import { useRouter } from "next/router";
-import { getUpcoming } from "api/themoviedb";
+import { getMoviesByCategory } from "api/themoviedb";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -54,7 +54,7 @@ const Upcoming = ({ movies }) => {
 export default Upcoming;
 
 export const getStaticProps = async () => {
-  const movies = await getUpcoming();
+  const movies = await getMoviesByCategory("upcoming");
   return {
     props: {
       movies,

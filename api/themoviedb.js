@@ -1,32 +1,8 @@
 import axios from "axios";
 
-export const getTopRated = async () => {
+export const getMoviesByCategory = async (category) => {
   const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.TMDB_API_KEY}`
-  );
-
-  return response.data.results;
-};
-
-export const getNowPlaying = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.TMDB_API_KEY}`
-  );
-
-  return response.data.results;
-};
-
-export const getPopular = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_API_KEY}`
-  );
-
-  return response.data.results;
-};
-
-export const getUpcoming = async () => {
-  const response = await axios.get(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.TMDB_API_KEY}`
+    `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.TMDB_API_KEY}`
   );
 
   return response.data.results;

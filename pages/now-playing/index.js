@@ -1,6 +1,6 @@
 import Movie from "components/movie";
 import { useRouter } from "next/router";
-import { getNowPlaying } from "api/themoviedb";
+import { getMoviesByCategory } from "api/themoviedb";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -54,7 +54,7 @@ const NowPlaying = ({ movies }) => {
 export default NowPlaying;
 
 export const getStaticProps = async () => {
-  const movies = await getNowPlaying();
+  const movies = await getMoviesByCategory("now_playing");
   return {
     props: {
       movies,

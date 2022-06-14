@@ -33,7 +33,6 @@ const TopRated = ({ movies }) => {
                 that allow you to rent or purchase the video distribution
                 version on iTunes, Google Play, etc.
               </h4>
-              <br />
             </div>
           </GridItem>
         </GridContainer>

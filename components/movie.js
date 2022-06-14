@@ -26,14 +26,14 @@ const Movie = ({ movie, classes, category }) => {
           <div
             className={classes.coloredShadow}
             style={{
-              backgroundImage: "url('/img/examples/color1.jpg')",
+              backgroundImage: "url('/img/examples/color2.jpg')",
               opacity: "1",
             }}
           />
         </CardHeader>
         <CardBody>
           <Warning>
-            <h6 className={classes.cardCategory}>{movie.title}</h6>
+            <h2 className={classes.cardCategory}>{movie.title}</h2>
           </Warning>
           <h4 className={classes.cardTitle}>{movie.overview}</h4>
         </CardBody>

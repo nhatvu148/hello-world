@@ -28,13 +28,34 @@ export default function SectionCarousel() {
   };
   return (
     <div className={classes.section} id="carousel">
-      <Card>
-        <Carousel {...settings}>
-          <Image src={`/img/bg.jpg`} alt="..." width={1100} height={1100} />
-          <Image src={`/img/bg2.jpg`} alt="..." width={1100} height={1100} />
-          <Image src={`/img/bg3.jpg`} alt="..." width={1100} height={1100} />
-        </Carousel>
-      </Card>
+      <div className={classes.container}>
+        <GridContainer>
+          <GridItem xs={12} sm={12} md={12} className={classes.marginAuto}>
+            <Card>
+              <Carousel {...settings}>
+                <Image
+                  src={`/img/nextjs_header.jpeg`}
+                  alt="..."
+                  width={1100}
+                  height={1100}
+                />
+                <Image
+                  src={`/img/bg2.jpg`}
+                  alt="..."
+                  width={1100}
+                  height={1100}
+                />
+                <Image
+                  src={`/img/bg3.jpg`}
+                  alt="..."
+                  width={1100}
+                  height={1100}
+                />
+              </Carousel>
+            </Card>
+          </GridItem>
+        </GridContainer>
+      </div>
     </div>
   );
 }

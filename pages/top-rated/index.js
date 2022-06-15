@@ -26,7 +26,7 @@ const TopRated = ({ movies }) => {
               <h2>Top Rated</h2>
               <h4>
                 You can see the drama and TV programs that you can enjoy online
-                at a glance from the list of JustWatch works! You can search for
+                at a glance from the list of NextJS Movies works! You can search for
                 works being distributed on monthly flat-rate video distribution
                 services such as Netflix, Hulu, and Amazon Prime Video by
                 narrowing down the conditions. You can also search for services

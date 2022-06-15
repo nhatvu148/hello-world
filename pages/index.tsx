@@ -1,3 +1,5 @@
+import { NextPage } from "next";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 
@@ -12,6 +14,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import componentsStyle from "styles/jss/nextjs-material-kit-pro/pages/componentsStyle.js";
 
+// @ts-ignore
 const useStyles = makeStyles(componentsStyle);
 
 const videoList = [
@@ -24,7 +27,7 @@ const videoList = [
   "DtQycgMD4HQ",
 ];
 
-const Home = () => {
+const Home: NextPage = () => {
   const classes = useStyles();
   const videoId = videoList[Math.floor(Math.random() * videoList.length)];
 

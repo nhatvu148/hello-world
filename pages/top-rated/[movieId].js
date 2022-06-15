@@ -2,9 +2,9 @@ import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
 const Movie = ({ movie }) => {
   return (
-    <>
+    <div style={{ marginTop: "70px" }}>
       <h2>{movie.overview}</h2>
-    </>
+    </div>
   );
 };
 

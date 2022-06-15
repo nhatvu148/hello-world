@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 // react component for creating beautiful carousel
 import Carousel from "react-slick";
 // @material-ui/core components
@@ -17,7 +19,7 @@ const useStyles = makeStyles(carouselStyle);
 export default function SectionCarousel() {
   const classes = useStyles();
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 1000,
     slidesToShow: 1,
@@ -26,55 +28,13 @@ export default function SectionCarousel() {
   };
   return (
     <div className={classes.section} id="carousel">
-      <div className={classes.container}>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={12} className={classes.marginAuto}>
-            <Card>
-              <Carousel {...settings}>
-                <div>
-                  <img
-                    src="/img/bg.jpg"
-                    alt="First slide"
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src="/img/bg2.jpg"
-                    alt="Second slide"
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Somewhere Beyond, United States
-                    </h4>
-                  </div>
-                </div>
-                <div>
-                  <img
-                    src="/img/bg3.jpg"
-                    alt="Third slide"
-                    className="slick-image"
-                  />
-                  <div className="slick-caption">
-                    <h4>
-                      <LocationOn className="slick-icons" />
-                      Yellowstone National Park, United States
-                    </h4>
-                  </div>
-                </div>
-              </Carousel>
-            </Card>
-          </GridItem>
-        </GridContainer>
-      </div>
+      <Card>
+        <Carousel {...settings}>
+          <Image src={`/img/bg.jpg`} alt="..." width={1100} height={1100} />
+          <Image src={`/img/bg2.jpg`} alt="..." width={1100} height={1100} />
+          <Image src={`/img/bg3.jpg`} alt="..." width={1100} height={1100} />
+        </Carousel>
+      </Card>
     </div>
   );
 }

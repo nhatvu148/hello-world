@@ -25,11 +25,11 @@ const SectionNavbars = () => {
     <Header
       brand="NextJS Movies"
       fixed
-      color="transparent"
-      changeColorOnScroll={{
-        height: 400,
-        color: "info",
-      }}
+      color="rose"
+      // changeColorOnScroll={{
+      //   height: 400,
+      //   color: "info",
+      // }}
       links={
         <div className={classes.collapse}>
           <List className={classes.list + " " + classes.mrAuto}>
@@ -78,7 +78,7 @@ const SectionNavbars = () => {
               </Button>
             </ListItem>
           </List>
-          {/* <div className={classes.mlAuto}>
+          <div className={classes.mlAuto}>
             <CustomInput
               white
               inputRootCustomClasses={classes.inputRootCustomClasses}
@@ -96,7 +96,7 @@ const SectionNavbars = () => {
             <Button color="white" justIcon round>
               <Search className={classes.searchIcon} />
             </Button>
-          </div> */}
+          </div>
         </div>
       }
     />

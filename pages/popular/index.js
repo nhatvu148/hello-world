@@ -19,7 +19,7 @@ const Popular = ({ movies }) => {
 
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.container} style={{ marginTop: "70px" }}>
         <GridContainer>
           <GridItem xs={12} sm={12} md={12}>
             <div className={classes.title}>

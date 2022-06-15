@@ -5,7 +5,6 @@ import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
 
 // sections for this page
-import SectionNavbars from "pages-sections/components/SectionNavbars.js";
 import SectionCarousel from "pages-sections/components/SectionCarousel.js";
 
 // core components
@@ -21,8 +20,7 @@ const Home = () => {
   const classes = useStyles();
   return (
     <div>
-      <SectionNavbars />
-      <Parallax image="/img/nextjs_header.jpeg" className={classes.parallax}>
+      {/* <Parallax image="/img/nextjs_header.jpeg" className={classes.parallax}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem>
@@ -34,8 +32,8 @@ const Home = () => {
             </GridItem>
           </GridContainer>
         </div>
-      </Parallax>
-      {/* <SectionCarousel /> */}
+      </Parallax> */}
+      <SectionCarousel />
     </div>
   );
 };

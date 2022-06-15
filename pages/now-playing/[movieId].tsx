@@ -1,6 +1,15 @@
+import React, { FC } from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
-const Movie = ({ movie }) => {
+interface IMovie {
+  [key: string]: any
+}
+interface IProps {
+  movie: IMovie
+}
+
+const Movie: FC<IProps> = ({ movie }) => {
   return (
     <div style={{ marginTop: "70px" }}>
       <h2>{movie.overview}</h2>
@@ -10,8 +19,8 @@ const Movie = ({ movie }) => {
 
 export default Movie;
 
-export const getStaticPaths = async () => {
-  const data = await getMoviesByCategory("popular");
+export const getStaticPaths: GetStaticPaths = async () => {
+  const data = await getMoviesByCategory("now_playing");
   return {
     paths: data.map((result) => {
       return {
@@ -22,7 +31,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const movie = await getMovie(params.movieId);
   return {
     props: {

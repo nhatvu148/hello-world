@@ -1,3 +1,6 @@
+import React, { FC } from "react";
+import { GetStaticProps } from "next";
+
 import Movie from "components/movie";
 import { useRouter } from "next/router";
 import { getMoviesByCategory } from "api/themoviedb";
@@ -11,9 +14,17 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js";
 
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
-const NowPlaying = ({ movies }) => {
+interface IMovie {
+  [key: string]: any
+}
+interface IProps {
+  movies: IMovie[]
+}
+
+const TopRated: FC<IProps> = ({ movies }) => {
   const router = useRouter();
   const classes = useStyles();
 
@@ -21,9 +32,10 @@ const NowPlaying = ({ movies }) => {
     <>
       <div className={classes.container} style={{ marginTop: "70px" }}>
         <GridContainer>
+          {/* @ts-ignore */}
           <GridItem xs={12} sm={12} md={12}>
             <div className={classes.title}>
-              <h2>Now Playing</h2>
+              <h2>Top Rated</h2>
               <h4>
                 You can see the drama and TV programs that you can enjoy online
                 at a glance from the list of NextJS Movies works! You can search for
@@ -53,10 +65,10 @@ const NowPlaying = ({ movies }) => {
   );
 };
 
-export default NowPlaying;
+export default TopRated;
 
-export const getStaticProps = async () => {
-  const movies = await getMoviesByCategory("now_playing");
+export const getStaticProps: GetStaticProps = async () => {
+  const movies = await getMoviesByCategory("top_rated");
   return {
     props: {
       movies,

@@ -1,3 +1,5 @@
+import React, { FC } from "react";
+import { GetStaticProps } from "next";
 import Movie from "components/movie";
 import { useRouter } from "next/router";
 import { getMoviesByCategory } from "api/themoviedb";
@@ -11,9 +13,17 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/sectionCards.js";
 
+// @ts-ignore
 const useStyles = makeStyles(styles);
 
-const Upcoming = ({ movies }) => {
+interface IMovie {
+  [key: string]: any
+}
+interface IProps {
+  movies: IMovie[]
+}
+
+const Upcoming: FC<IProps> = ({ movies }) => {
   const router = useRouter();
   const classes = useStyles();
 
@@ -21,6 +31,7 @@ const Upcoming = ({ movies }) => {
     <>
       <div className={classes.container} style={{ marginTop: "70px" }}>
         <GridContainer>
+          {/* @ts-ignore */}
           <GridItem xs={12} sm={12} md={12}>
             <div className={classes.title}>
               <h2>Upcoming</h2>
@@ -55,7 +66,7 @@ const Upcoming = ({ movies }) => {
 
 export default Upcoming;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const movies = await getMoviesByCategory("upcoming");
   return {
     props: {

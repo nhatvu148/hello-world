@@ -1,3 +1,4 @@
+import React, { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,8 +9,18 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import Warning from "components/Typography/Warning.js";
 
-const Movie = ({ movie, classes, category }) => {
+interface IMovie {
+  [key: string]: any
+}
+interface IProps {
+  movie: IMovie;
+  classes: any,
+  category: string
+}
+
+const Movie: FC<IProps> = ({ movie, classes, category }) => {
   return (
+    // @ts-ignore
     <GridItem xs={12} sm={4} md={4}>
       <Card blog>
         <CardHeader image>

@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  next_movie:
+    container_name: next_movie
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    entrypoint: ["/bin/sh","-c"]
+    command:
+    - |
+       yarn build && yarn start
+    ports:
+      - "3003:3000"
+    volumes:
+      - /app/node_modules
+      - .:/app

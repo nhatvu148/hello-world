@@ -10,12 +10,12 @@ import CardBody from "components/Card/CardBody.js";
 import Warning from "components/Typography/Warning.js";
 
 interface IMovie {
-  [key: string]: any
+  [key: string]: any;
 }
 interface IProps {
   movie: IMovie;
-  classes: any,
-  category: string
+  classes: any;
+  category: string;
 }
 
 const Movie: FC<IProps> = ({ movie, classes, category }) => {

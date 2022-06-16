@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const getMoviesByCategory = async (category) => {
+export const getMoviesByCategory = async (category: string) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.TMDB_API_KEY}`
   );
@@ -8,7 +8,7 @@ export const getMoviesByCategory = async (category) => {
   return response.data.results;
 };
 
-export const getMovie = async (movieId) => {
+export const getMovie = async (movieId: string) => {
   const response = await axios.get(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.TMDB_API_KEY}`
   );

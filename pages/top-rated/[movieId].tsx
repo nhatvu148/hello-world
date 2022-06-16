@@ -3,10 +3,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
 interface IMovie {
-  [key: string]: any
+  [key: string]: any;
 }
 interface IProps {
-  movie: IMovie
+  movie: IMovie;
 }
 
 const Movie: FC<IProps> = ({ movie }) => {
@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const movie = await getMovie(params.movieId);
+  const movie = await getMovie(params.movieId as string);
   return {
     props: {
       movie,

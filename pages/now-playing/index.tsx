@@ -17,10 +17,10 @@ import styles from "styles/jss/nextjs-material-kit-pro/pages/componentsSections/
 const useStyles = makeStyles(styles);
 
 interface IMovie {
-  [key: string]: any
+  [key: string]: any;
 }
 interface IProps {
-  movies: IMovie[]
+  movies: IMovie[];
 }
 
 const NowPlaying: FC<IProps> = ({ movies }) => {
@@ -37,12 +37,12 @@ const NowPlaying: FC<IProps> = ({ movies }) => {
               <h2>Now Playing</h2>
               <h4>
                 You can see the drama and TV programs that you can enjoy online
-                at a glance from the list of NextJS Movies works! You can search for
-                works being distributed on monthly flat-rate video distribution
-                services such as Netflix, Hulu, and Amazon Prime Video by
-                narrowing down the conditions. You can also search for services
-                that allow you to rent or purchase the video distribution
-                version on iTunes, Google Play, etc.
+                at a glance from the list of NextJS Movies works! You can search
+                for works being distributed on monthly flat-rate video
+                distribution services such as Netflix, Hulu, and Amazon Prime
+                Video by narrowing down the conditions. You can also search for
+                services that allow you to rent or purchase the video
+                distribution version on iTunes, Google Play, etc.
               </h4>
             </div>
           </GridItem>

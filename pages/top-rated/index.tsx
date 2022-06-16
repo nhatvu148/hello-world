@@ -67,7 +67,12 @@ const TopRated: FC<IProps> = ({ movies }) => {
 
 export default TopRated;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { params, req, res, query } = context;
+  console.log(query);
+  console.log(req.headers.cookie);
+  res.setHeader("Set-Cookie", ["name=abbeal"]);
+
   const movies = await getMoviesByCategory("top_rated");
   return {
     props: {

@@ -14,4 +14,18 @@ module.exports = withPlugins([[withImages]], {
   experimental: {
     scrollRestoration: true,
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/about",
+        destination: "https://www.google.com",
+        permanent: true,
+      },
+      {
+        source: "/old-blog/:id",
+        destination: "/new-blog/:id",
+        permanent: false,
+      },
+    ];
+  },
 });

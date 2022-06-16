@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { useRouter } from "next/router";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
@@ -10,6 +11,11 @@ interface IProps {
 }
 
 const Movie: FC<IProps> = ({ movie }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <div style={{ marginTop: "70px" }}>
       <h2>{movie.overview}</h2>
@@ -21,21 +27,29 @@ export default Movie;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getMoviesByCategory("upcoming");
+
   return {
-    paths: data.map((result) => {
+    paths: data.slice(0, 3).map((result) => {
       return {
         params: { movieId: result.id.toString() },
       };
     }),
-    fallback: false,
+    fallback: true,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const movie = await getMovie(params.movieId as string);
-  return {
-    props: {
-      movie,
-    },
-  };
+  try {
+    const movie = await getMovie(params.movieId as string);
+
+    return {
+      props: {
+        movie,
+      },
+    };
+  } catch (err) {
+    return {
+      notFound: true,
+    };
+  }
 };

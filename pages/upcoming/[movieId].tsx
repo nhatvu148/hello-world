@@ -46,6 +46,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       props: {
         movie,
       },
+      revalidate: 10,
     };
   } catch (err) {
     return {

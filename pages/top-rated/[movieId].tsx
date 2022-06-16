@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps, GetStaticPaths } from "next";
 import { getMoviesByCategory, getMovie } from "api/themoviedb";
 
 interface IMovie {
@@ -19,19 +19,7 @@ const Movie: FC<IProps> = ({ movie }) => {
 
 export default Movie;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getMoviesByCategory("top_rated");
-  return {
-    paths: data.map((result) => {
-      return {
-        params: { movieId: result.id.toString() },
-      };
-    }),
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const movie = await getMovie(params.movieId as string);
   return {
     props: {

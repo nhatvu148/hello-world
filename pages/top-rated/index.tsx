@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 import Movie from "components/movie";
 import { useRouter } from "next/router";
@@ -67,7 +67,7 @@ const TopRated: FC<IProps> = ({ movies }) => {
 
 export default TopRated;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const movies = await getMoviesByCategory("top_rated");
   return {
     props: {

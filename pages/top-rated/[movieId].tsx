@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { GetServerSideProps, GetStaticPaths } from "next";
 import { getMoviesByCategory, getMovie } from "api/themoviedb";
+import Head from "next/head";
 
 interface IMovie {
   [key: string]: any;
@@ -11,9 +12,16 @@ interface IProps {
 
 const Movie: FC<IProps> = ({ movie }) => {
   return (
-    <div style={{ marginTop: "70px" }}>
-      <h2>{movie.overview}</h2>
-    </div>
+    <>
+      <Head>
+        <title>{movie.title}</title>
+        <meta name="description" content={movie.overview} />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div style={{ marginTop: "70px" }}>
+        <h2>{movie.overview}</h2>
+      </div>
+    </>
   );
 };
 
